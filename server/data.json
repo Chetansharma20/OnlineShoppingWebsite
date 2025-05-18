@@ -1,0 +1,82 @@
+[
+    {
+        "userName": "Ahsih",
+        "userEmail": "SADDADADA@gmai.cim",
+        "userGender": "Male",
+        "userAge": 12,
+        "userBio": "ahfjashfhs fsdjfjsd fjsdf jsdhfjsdhfjh sjfsf",
+        "userRole": "user"
+    },
+    {
+        "data": {
+            "userName": "Ahsih",
+            "userEmail": "saddadada@gmai.cim",
+            "userGender": "Male",
+            "userAge": 16,
+            "userRegistrationDate": "2025-04-03T06:14:51.826Z",
+            "userPhoto": "PHOTO",
+            "userBio": "ahfjashfhs fsdjfjsd fjsdf jsdhfjsdhfjh sjfsf",
+            "userRole": "user",
+            "_id": "67ee28170657921f54892762",
+            "__v": 0
+        },
+        "message": "User Added Successfully"
+    },
+    {
+        "userId": "67ee27c5af94f8a8e780a7e1"
+    },
+    {
+        "userId": "67ee28170657921f54892762",
+        "userAge": 45
+    },
+
+
+    {
+    "title": "Essence Mascara Lash Princess",
+"description": "The Essence Mascara Lash Princess is a popular mascara known for its volumizing and lengthening effects. Achieve dramatic lashes with this long-lasting and cruelty-free formula.",
+"category": "beauty",
+"price": 9.99,
+"discountPercentage": 7.17,
+"rating": 4.94,
+"stock": 5
+},
+{
+   "comment": "Very unhappy with my purchase!",
+"date": "2024-05-23T08:56:21.618Z",
+"reviewerName": "John Doe",
+"reviewerEmail": "john.doe@x.dummyjson.com"  
+},
+{
+    "title": "Essence Mascara Lash Princess",
+    "description": "The Essence Mascara Lash Princess is a popular mascara known for its volumizing and lengthening effects. Achieve dramatic lashes with this long-lasting and cruelty-free formula.",
+    "category": "beauty",
+    "price": 9.99,
+    "discountPercentage": 7.17
+  },
+  
+  {
+    "rating": 4,
+    "comment": "asjdhasd ashdjas dasdhjasd ad   ",
+    "productId": "67ef77631d3a716f816d9aa3",
+    "userId": "67ee28170657921f54892762"
+  },
+  {
+    "orderTotalAmount": 2343,
+    "orderItems": [
+      {
+        "prodId": "67ef77631d3a716f816d9aa3",
+        "qty": 3
+      },
+      {
+        "prodId": "67ef77631d3a716f816d9aa3",
+        "qty": 2
+      },
+      {
+        "prodId": "67ef77631d3a716f816d9aa3",
+        "qty": 5
+      }
+    ],
+    "userId": "67ee28170657921f54892762"
+  }
+
+]
