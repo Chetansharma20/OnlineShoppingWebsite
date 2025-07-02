@@ -1,6 +1,6 @@
 import express from "express"
 import { createProduct, deleteProduct, fetchAllProducts, updateProduct } from "../Controllers/ProductControllers.js"
-import { upload } from "../MiddleWare/FileuploadMiddleware.js"
+import { upload } from "../Middleware/FileuploadMiddleware.js"
 // import { upload } from "../MiddleWare/FileuploadMiddleware.js"
 let productRouter = express.Router()
 
