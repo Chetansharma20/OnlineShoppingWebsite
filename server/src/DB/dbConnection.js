@@ -1,18 +1,15 @@
 import mongoose from "mongoose";
-let DB_URL = "mongodb://localhost:27017/db-connection"
 
+export async function connectToDatabase() {
+  try {
+    const connection = await mongoose.connect(process.env.MONGO_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
 
- async function connectToDatabase()
-{
-    try
-    {
-        let connection = await mongoose.connect(DB_URL)
-        console.log("DB CONNECTED",connection.connection.name)
-    }
-        catch(error)
-        {
-            console.log(error)
-        }
-    }
-
-export {connectToDatabase} 
+    console.log("✅ DB CONNECTED:", connection.connection.name);
+  } catch (error) {
+    console.error("❌ DB CONNECTION ERROR:", error);
+    process.exit(1); // Exit if it fails to connect
+  }
+}

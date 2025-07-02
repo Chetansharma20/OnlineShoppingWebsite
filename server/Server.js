@@ -6,9 +6,12 @@ import { productRouter } from './src/routes/ProductRoutes.js'
 import { reviewRouter } from './src/routes/ReviewRouter.js'
 import { OrderRoutes } from './src/routes/OrderRoutes.js'
 import cors from "cors"
+import dotenv from "dotenv";
+dotenv.config();
+
 let Server = express()
 Server.use(express.json());
-
+const PORT = process.env.PORT || 5000;
 Server.use(bodyParser.json())
 Server.use(cors())
 // call DB Connection function
