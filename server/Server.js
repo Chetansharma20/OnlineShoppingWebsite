@@ -26,7 +26,7 @@ Server.use("/api", productRouter)
 Server.use("/api", reviewRouter)
 Server.use("/api", OrderRoutes)
 Server.use("/Uploadimages",express.static("Uploadimages"))
-Server.listen(5000, ()=>
+Server.listen(PORT, ()=>
 {
-    console.log("server started")
+    console.log(" Server running on http://localhost:${PORT}")
 })
