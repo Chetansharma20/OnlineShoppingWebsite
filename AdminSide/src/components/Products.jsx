@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import axios from "axios";
-import { Box, Button, Card, CardActions, CardContent, CardMedia, Dialog, DialogActions, DialogContent, DialogTitle, Grid, TextField, Typography } from '@mui/material';
+import { Box, Button, Card, CardActions, CardContent, CardMedia, Dialog, DialogActions, DialogContent, DialogTitle, FormControlLabel, Grid, Radio, RadioGroup, TextField, Typography } from '@mui/material';
 
 const Products = () => {
   const [allProducts, setAllProducts] = useState([]);
   const [SelectedProd, setselectedProd] = useState(null)
   const [openDialog, setopenDialog] = useState(false)
   const [newPrice, setnewPrice] = useState(0)
- 
+  const [openStockDialog, setOpenStockDialog] = useState(false);
+  const [stockStatus, setStockStatus] = useState("true");
+
   let openUpdateDialog = (prod) => {
     setopenDialog(true)
     setselectedProd(prod)
@@ -17,6 +19,30 @@ const Products = () => {
     setopenDialog(false)
     setselectedProd(null)
   }
+   let openStockUpdateDialog = (prod) => {
+    setOpenStockDialog(true);
+    setselectedProd(prod);
+    setStockStatus(prod.isAvailable ? "true" : "false");
+  }
+
+  let closeStockUpdateDialog = () => {
+    setOpenStockDialog(false);
+    setselectedProd(null);
+  }
+
+   let updateStockStatus = async () => {
+    try {
+      let result = await axios.put("http://localhost:5000/api/updateproduct", { isAvailable: stockStatus === "true", prodId: SelectedProd._id });
+      console.log(result.data);
+      closeStockUpdateDialog();
+      // Optionally refresh products
+      let refreshed = await axios.get("http://localhost:5000/api/fetchproducts");
+      setAllProducts(refreshed.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
  let updateprodPrice = async () => {
     try {
       let result = await axios.put("http://localhost:5000/api/updateproduct", { price: newPrice, prodId: SelectedProd._id })
@@ -94,6 +120,9 @@ const Products = () => {
                       <Button variant='contained' onClick={() => {
                         openUpdateDialog(prod)
                       }} color='primary' >Update</Button>
+                        <Button variant='outlined' onClick={() => openStockUpdateDialog(prod)}>
+                        Update Stock
+                      </Button>
                     </CardActions>
                   </Card>
                 </Grid>
@@ -117,6 +146,22 @@ const Products = () => {
             <Button onClick={() => updateprodPrice()} variant='contained' color='primary'>Submit</Button>
             <Button onClick={() => closeUpdateDialog()} variant='contained' color='error'>Close</Button>
 
+          </DialogActions>
+        </Dialog>
+         <Dialog open={openStockDialog} onClose={closeStockUpdateDialog}>
+          <DialogTitle>Update Stock Status</DialogTitle>
+          <DialogContent>
+            <RadioGroup
+              value={stockStatus}
+              onChange={(e) => setStockStatus(e.target.value)}
+            >
+              <FormControlLabel value="true" control={<Radio color="primary" />} label="In Stock" />
+              <FormControlLabel value="false" control={<Radio color="secondary" />} label="Out of Stock" />
+            </RadioGroup>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={updateStockStatus} variant='contained' color='primary'>Update</Button>
+            <Button onClick={closeStockUpdateDialog} variant='contained' color='error'>Close</Button>
           </DialogActions>
         </Dialog>
       </Box>

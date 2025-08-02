@@ -47,13 +47,14 @@ let fetchAllProducts = async(req,res)=>
     }
  let updateProduct = async (req, res) => {
         try {
-            let { prodId, price } = req.body
+            let { prodId, price, isAvailable } = req.body
             let result = await Product.findByIdAndUpdate({ _id: prodId }, {
-                price:price
+                price:price,
+                isAvailable:isAvailable
             }, { new: true })
             res.status(200).json({
                 data: result,
-                message: "Product price Updated"
+                message: "Product price and availability updated successfully"
             })
         } catch (error) {
             res.status(500).json(error)

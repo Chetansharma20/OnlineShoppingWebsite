@@ -63,7 +63,7 @@ const Login = () => {
             type="email"
             label="Enter Email"
             variant="outlined"
-            name="CompanyEmail"
+            name="userEmail"
             required
             sx={{ marginBottom: 2 }}
           />
@@ -72,7 +72,7 @@ const Login = () => {
             type="password"
             label="Enter Password"
             variant="outlined"
-            name="CompanyPassword"
+            name="userPassword"
             required
             sx={{ marginBottom: 2 }}
           />

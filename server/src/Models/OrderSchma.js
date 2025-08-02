@@ -9,7 +9,7 @@ let OrderSchema = mongoose.Schema({
         qty: {type: Number}
 
     }],
-    userId: {type: mongoose.Schema.Types.ObjectId, ref:"user"}
+    userId: {type: mongoose.Schema.Types.ObjectId, ref:"User"}
 })
 
 export const Order = mongoose.model("order", OrderSchema)

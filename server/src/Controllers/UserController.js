@@ -73,6 +73,7 @@ let deleteUser = async (req, res) => {
         let { userId } = req.body
         let result = await User.findByIdAndDelete({ _id: userId })
         res.status(200).json({
+            
             message: "User Deleted"
         })
     } catch (error) {

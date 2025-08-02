@@ -29,7 +29,7 @@ let CartSlice = createSlice({
         },
         incrementQty:(state, actions)=>
         {
-            let prod = state.cartItems.find((item)=> item.id == actions.payload.pId)
+            let prod = state.cartItems.find((item)=> item._id == actions.payload.pId)
             prod.qty += 1
             
 
@@ -37,21 +37,22 @@ let CartSlice = createSlice({
         decrementQty:()=>
         {
 
-            let prod = state.cartItems.find((item)=> item.id == actions.payload.pId)
+            let prod = state.cartItems.find((item)=> item._id == actions.payload.pId)
             if (prod.qty <= 0) 
             {
-                state.cartItems = state.cartItems.filter((item)=> item.id != actions.payload.pId)
+                state.cartItems = state.cartItems.filter((item)=> item._id != actions.payload.pId)
             }
             else
             {
                 prod.qty -= 1
             }
-
+         state.cartItemCount = state.cartItems.length;
         },
+        
         removeItem:(state, actions)=>
         {
-            state.cartItems = state.cartItems.filter((item)=> item.id != actions.payload.pId)
-
+            state.cartItems = state.cartItems.filter((item)=> item._id != actions.payload.pId)
+    state.cartItemCount = state.cartItems.length;
         },
         calculateTotal:(state)=>{
        let totalAmt = 0
@@ -65,6 +66,8 @@ state.cartTotalAmount = totalAmt
 clearCart:(state)=>
         {
        state.cartItems = []
+       state.cartTotalAmount = 0
+       state.cartItemCount = 0
         }   
     }
 })

@@ -10,13 +10,15 @@ import {
   FormControl,
   Stack,
   Snackbar,
+  FormControlLabel,
+  Checkbox,
 } from '@mui/material';
 import axios from 'axios';
 
 const AddProduct = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [open, setOpen] = useState(false);
-
+const [isAvailable, setIsAvailable] = useState(false);
   const handleClick = () => {
     setOpen(true);
   };
@@ -27,6 +29,7 @@ const AddProduct = () => {
     e.preventDefault();
     let formData = new FormData(e.target);
     let reqData = Object.fromEntries(formData.entries());
+    reqData.isAvailable = isAvailable;
     console.log('REQ', reqData);
      
 
@@ -89,6 +92,17 @@ const AddProduct = () => {
           name="discountPercentage"
           type="number"
           fullWidth
+        />
+  <FormControlLabel
+          control={
+            <Checkbox
+              checked={isAvailable}
+              onChange={(e) => setIsAvailable(e.target.checked)}
+              name="isAvailable"
+              color="primary"
+            />
+          }
+          label="Available"
         />
 
         <Button

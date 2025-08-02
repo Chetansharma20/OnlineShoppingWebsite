@@ -3,12 +3,13 @@ import React, { useEffect, useState } from 'react'
 import axios from "axios";
 import { addItem } from '../reduxwork/CartSlice';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 // import CloseIcon from '@mui/icons-material/Close';
 
 const Products = () => {
   const[allProducts, setAllProducts] = useState([])
   const [open, setOpen] = useState(false);
-
+let navigate = useNavigate()
   const handleClick = () => {
     setOpen(true);
   };
@@ -59,12 +60,12 @@ const Products = () => {
                       <Typography variant='h5'>{prod.category}</Typography>
                       <Typography variant='h5' color={prod.price > 15 ? "error" : "primary"}>{prod.price}</Typography>
                       <Typography variant='h5'>{prod.brand}</Typography>
-                      {/* <Typography variant='h5'>{prod.prodimage}</Typography> */}
+                      <Typography variant='h5' color={prod.isAvailable ? "green" : "red"}>{prod.isAvailable ? "In Stock" :  "Out of Stock"}</Typography>
                     </CardContent>
                     <CardActions>
                       <Button  variant='contained' color='error' type='submit' onClick={()=> {dispatcher(addItem(prod)),handleClick()}}>Add to Cart</Button>
                         {/* // alert("added"), */}
-                     
+                       <Button  variant='contained' color='error' type='submit' onClick={()=> {navigate(`/products-details`, { state: { product: prod } })}}>Details</Button>
                     </CardActions>
                   </Card>
                 </Grid>

@@ -10,6 +10,7 @@ import NewAppBar from './NewAppBar'
 import Carts from './Carts'
 import Profile from './Profile'
 import ProtectedRoute from '../custom/ProtectedRoute'
+import ProductDetails from './ProductDetails'
 const Routing = () => {
   return (
     <>
@@ -21,6 +22,7 @@ const Routing = () => {
           <Orders/>
           </ProtectedRoute>}/>
         <Route path='/products' element={<Products/>}/>
+        <Route path='/products-details' element={<ProductDetails/>}/>
         <Route path='/register' element={<Register/>}/>
         <Route path='/cart' element={
           <ProtectedRoute><Carts/></ProtectedRoute>

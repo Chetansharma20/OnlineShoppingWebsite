@@ -27,6 +27,7 @@ const Register = () => {
       const result = await axios.post("http://localhost:5000/api/createuser", reqData);
       console.log(result.data);
       alert(result.data.message);
+      navigate('/login'); // Redirect after success
     } catch (error) {
       console.error(error.response?.data?.message || error.message);
     }
@@ -36,7 +37,7 @@ const Register = () => {
     <Box
       sx={{
         minHeight: '100vh',
-        backgroundColor: '#FFEBEE', // Light Pink background color that complements the orange app bar
+        backgroundColor: '#FFEBEE',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -68,16 +69,22 @@ const Register = () => {
           <TextField size="small" label="User Name" name="userName" required />
           <TextField size="small" label="Email" name="userEmail" type="email" required />
           <TextField size="small" label="Password" name="userPassword" type="password" required />
-          <TextField size="small" label="Bio" name="userBio" />
           <TextField size="small" label="Age" name="userAge" type="number" />
-          <TextField size="small" label="Role" name="userRole" />
+          <TextField size="small" label="Phone" name="userPhone" />
+          <TextField
+            size="small"
+            label="Address"
+            name="userAddress"
+            multiline
+            rows={3}
+          />
 
           <FormControl>
             <FormLabel sx={{ fontSize: '0.875rem' }}>Gender</FormLabel>
             <RadioGroup row defaultValue="Male" name="userGender">
               <FormControlLabel value="Female" control={<Radio size="small" />} label="Female" />
               <FormControlLabel value="Male" control={<Radio size="small" />} label="Male" />
-              <FormControlLabel value="Other" control={<Radio size="small" />} label="Other" />
+              <FormControlLabel value="Others" control={<Radio size="small" />} label="Others" />
             </RadioGroup>
           </FormControl>
 
