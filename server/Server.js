@@ -18,7 +18,7 @@ import dotenv from "dotenv";
 import passport from 'passport';
 import session from 'express-session'
 import { router } from './src/routes/passportroute.js'
-import { connectpassport } from './src/Controllers/passportController.js'
+import connectpassport  from './src/Controllers/PassportController.js'
 import RazorpayRoutes from './src/routes/PaymentRoutes.js'
 
 dotenv.config();

@@ -1,2 +1,11 @@
+# Node modules
+client/node_modules/
+admin/node_modules/
+server/node_modules/
+
+# Env files
 server/.env
-node_modules/
+
+# Build / dist
+client/build/
+admin/build/
