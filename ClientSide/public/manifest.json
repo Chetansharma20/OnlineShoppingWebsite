@@ -1,0 +1,8 @@
+{
+  "short_name": "MyApp",
+  "name": "My React E-Commerce App",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff"
+}

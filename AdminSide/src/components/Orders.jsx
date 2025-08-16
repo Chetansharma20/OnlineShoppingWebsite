@@ -52,7 +52,7 @@ const [open, setOpen] = useState(false);
     //define function
     let fetchOrders = async () => {
         let result = await axios.get("http://localhost:5000/api/fetchorders")
-        console.log("DATR", result);
+        console.log("DATR", result.data);
         setAllOrders(result.data)
     }
 
@@ -138,8 +138,10 @@ const handleChange = (e) => {
                 <strong>Total Amount:</strong> ₹{order.orderTotalAmount}
               </Typography>
               <Typography variant="h6" gutterBottom>
-                <strong>User ID:</strong> {order.userId}
+                <strong>User Name:</strong> {order.userId?.userName}
               </Typography>
+                <Typography variant="h6" gutterBottom>
+               </Typography>
             </CardContent>
 
             <CardActions>

@@ -3,14 +3,14 @@ import mongoose from "mongoose";
 const ReviewSchema = new mongoose.Schema({
     rating:{
         type: Number,
-        required:true,
+        required:false,
         min:1,
         max:5
     },
-    Comment:
+    comment:
     {
         type: String,
-        required:true,
+        required:false,
         trim: true
     },
     date:{
@@ -26,7 +26,7 @@ const ReviewSchema = new mongoose.Schema({
     },
     userId:{
         type:mongoose.Schema.Types.ObjectId,
-        ref: "user"
+        ref: "User"
     }
 }, {timestamps:true});
 

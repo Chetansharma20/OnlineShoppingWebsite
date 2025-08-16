@@ -11,6 +11,11 @@ import Carts from './Carts'
 import Profile from './Profile'
 import ProtectedRoute from '../custom/ProtectedRoute'
 import ProductDetails from './ProductDetails'
+import WishList from './WishList'
+import CompleteProfile from './CompleteProfile'
+import Checkout from './Checkout'
+import Payment from './Payment'
+// import GoogleCallback from './GoogleCallback'
 const Routing = () => {
   return (
     <>
@@ -28,7 +33,15 @@ const Routing = () => {
           <ProtectedRoute><Carts/></ProtectedRoute>
           }/>
         <Route path='/profile' element={<Profile/>}/>
+        <Route path='/wishlist' element={<ProtectedRoute>
+          <WishList/>
+          </ProtectedRoute>}/>
 
+         <Route path='/completeprofile' element={<CompleteProfile/>}/> 
+         
+         <Route path='/checkout' element={<Checkout/>}/> 
+            <Route path='/payment' element={<Payment/>}/>
+{/* <Route path='/google-callback' element={<GoogleCallback/>}/> */}
     </Routes>
     
     

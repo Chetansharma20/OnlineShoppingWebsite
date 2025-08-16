@@ -20,11 +20,10 @@ let userSlice = createSlice({
     logout: (state)=>
     {
         state.userData = {}
-        state.isLogin = true
+        state.isLogin = false
     }
 }
 
 })
 export const{register, login, logout} = userSlice.actions
 export default userSlice.reducer
-

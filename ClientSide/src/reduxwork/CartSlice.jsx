@@ -34,19 +34,18 @@ let CartSlice = createSlice({
             
 
         },
-        decrementQty:()=>
+        decrementQty:(state, actions)=>
         {
-
             let prod = state.cartItems.find((item)=> item._id == actions.payload.pId)
-            if (prod.qty <= 0) 
+            if (prod && prod.qty <= 1)
             {
                 state.cartItems = state.cartItems.filter((item)=> item._id != actions.payload.pId)
             }
-            else
+            else if (prod)
             {
                 prod.qty -= 1
             }
-         state.cartItemCount = state.cartItems.length;
+            state.cartItemCount = state.cartItems.length;
         },
         
         removeItem:(state, actions)=>

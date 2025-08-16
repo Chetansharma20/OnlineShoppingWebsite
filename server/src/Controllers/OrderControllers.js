@@ -41,6 +41,7 @@ let fetchAllOrders = async(req,res)=>
         let result = await Order.find({userId:userId})
         .populate("userId")
         .populate("orderItems.prodId")
+        
         res.status(200).json(
             {
                 data:result,
